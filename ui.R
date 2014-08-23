@@ -1,10 +1,12 @@
 shinyUI(fluidPage(
-  title="% GDP Healthcare Spending", 
+  title="Health Expenditure Per Capita (Current US$)", 
+  h2("Health Expenditure Per Capita (Current US$)"),
+  h6("Source:", {a("World Bank", href="http://data.worldbank.org/indicator/SH.XPD.PCAP/countries?display=default")}),
   htmlOutput('myMap'),
   hr(),
   fluidRow(
     column(3,
-           h4("Map"),           
+           h4("Map Year"),           
            sliderInput('year', 'Year',format ="####",  min=2010, max=2012, value=2012, 
                        step=1),
            br()

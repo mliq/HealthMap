@@ -2,7 +2,7 @@ library(googleVis)
 library(shiny)
 
 shinyServer(function(input, output) {
-	data1<-read.csv("sh.xpd.pcap_Indicator_en_csv_v2.1.csv")
+	data1<-read.csv("https://raw.githubusercontent.com/mliq/HealthMap/master/sh.xpd.pcap_Indicator_en_csv_v2.1.csv")
 	data2<-data1[,-2:-54]
 	data2<-data2[,-5]
 	data3<-na.omit(data2)
@@ -22,7 +22,7 @@ shinyServer(function(input, output) {
     gvisGeoChart(data3, locationvar="Countries", colorvar=input$year,
                  options=list(region="world", 
                               colorAxis="{values:[100,500,1000,4000],
-                                   colors:[\'red', \'pink\', \'orange',\'green']}",height=500,width=600,keepAspectRatio='false'))
+                                   colors:[\'red', \'pink\', \'orange',\'green']}",height=450,width=600,keepAspectRatio='false'))
   })
   output$myTable <- renderGvis({
     gvisTable(data3,options=list(width=450))
