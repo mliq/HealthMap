@@ -1,8 +1,12 @@
 library(googleVis)
 library(shiny)
+#library(RCurl)
 
 shinyServer(function(input, output) {
-	data1<-read.csv("https://raw.githubusercontent.com/mliq/HealthMap/master/sh.xpd.pcap_Indicator_en_csv_v2.1.csv")
+  #download.file("https://raw.github.com/aronlindberg/latent_growth_classes/master/LGC_data.csv", 
+  #              destfile = "/tmp/test.csv", method = "curl")
+  #x <- getURL("https://raw.githubusercontent.com/mliq/HealthMap/master/sh.xpd.pcap_Indicator_en_csv_v2.1.csv")
+  data1 <- read.csv("sh.xpd.pcap_Indicator_en_csv_v2.1.csv")
 	data2<-data1[,-2:-54]
 	data2<-data2[,-5]
 	data3<-na.omit(data2)
@@ -20,9 +24,9 @@ shinyServer(function(input, output) {
 
     output$myMap <- renderGvis({
     gvisGeoChart(data3, locationvar="Countries", colorvar=input$year,
-                 options=list(region="world", 
+                 options=list(legend='false', 
                               colorAxis="{values:[100,500,1000,4000],
-                                   colors:[\'red', \'pink\', \'orange',\'green']}",height=450,width=600,keepAspectRatio='false'))
+                                   colors:['#FF0000', '#FFC0CB', '#FFA500','#008000']}",height=400,width=600,keepAspectRatio='false'))
   })
   output$myTable <- renderGvis({
     gvisTable(data3,options=list(width=450))
