@@ -1,11 +1,7 @@
 library(googleVis)
 library(shiny)
-#library(RCurl)
 
 shinyServer(function(input, output) {
-  #download.file("https://raw.github.com/aronlindberg/latent_growth_classes/master/LGC_data.csv", 
-  #              destfile = "/tmp/test.csv", method = "curl")
-  #x <- getURL("https://raw.githubusercontent.com/mliq/HealthMap/master/sh.xpd.pcap_Indicator_en_csv_v2.1.csv")
   data1 <- read.csv("sh.xpd.pcap_Indicator_en_csv_v2.1.csv")
 	data2<-data1[,-2:-54]
 	data2<-data2[,-5]

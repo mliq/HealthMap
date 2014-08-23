@@ -3,7 +3,7 @@ shinyUI(fluidPage(
   h2("Health Expenditure Per Capita (Current US$)"),
   h6("Source:", {a("World Bank", href="http://data.worldbank.org/indicator/SH.XPD.PCAP/countries?display=default")}),
   htmlOutput('myMap'),
-  h4("Legend: ", "  100", {img(src="legend.png")}, "4000"),
+  h4("Legend:", "100", {img(src="legend.png")}, "4000"),
   hr(),
   fluidRow(
     column(3,
