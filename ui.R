@@ -15,7 +15,7 @@ shinyUI(fluidPage(
     column(10, 
            h4("Calculate Annual Growth Rate:"),
            uiOutput("cSelector"),
-           htmlOutput('myTable2'),
+           tableOutput('myTable2'),
            h4(htmlOutput('text1'))
     )
   ),
