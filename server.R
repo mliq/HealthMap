@@ -20,6 +20,7 @@ shinyServer(function(input, output) {
 	data3[188,1]<-"Slovakia"
 	data3[101,1]<-"Kyrgyzstan"
   row.names(data3)<-data3$Countries
+  #Calculation Table
   output$myTable2 <- renderTable(table(input$country))
   table<-function(x){
     y1<-data3[x,2]
@@ -30,10 +31,17 @@ shinyServer(function(input, output) {
     g2<-((y3-y2)/y2)*100
     g2<-as.numeric(format(round(g2, 2), nsmall = 2))
     avg<-((g1+g2)/2)
-    df<-rbind(data3[x,-1],c("",g1,g2),c(avg,"",""))
-    row.names(df)<-c("Exp. $","YoY Growth %","Avg. Growth %")
+    assign("avg", avg, envir = .GlobalEnv)
+    df<-rbind(data3[x,-1],c("",g1,g2))
+    row.names(df)<-c("Exp. $","YoY Growth %")
+    output$text1 <- renderText({ 
+      paste("Avg. Growth % ",avg)
+    })
     return(df)
   }
+  output$cSelector <- renderUI({
+    selectInput("country", "Select Country:", as.list(data3$Countries)) 
+  })
   output$myMap <- renderGvis({
   gvisGeoChart(data3, locationvar="Countries", colorvar=input$year, options=list(legend='false', 
                               colorAxis="{values:[100,500,1000,4000],

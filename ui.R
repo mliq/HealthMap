@@ -14,8 +14,9 @@ shinyUI(fluidPage(
     ),
     column(8, 
            h4("Calculate Annual Growth Rate:"),
-           selectInput(inputId = "country", label = "Select Country:", choices = data3$Countries, selected = 'Data view'),
-           htmlOutput('myTable2')
+           uiOutput("cSelector"),
+           htmlOutput('myTable2'),
+           h4(htmlOutput('text1'))
     )
   ),
   fluidRow(
