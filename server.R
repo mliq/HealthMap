@@ -20,6 +20,14 @@ shinyServer(function(input, output) {
 	data3[188,1]<-"Slovakia"
 	data3[101,1]<-"Kyrgyzstan"
   row.names(data3)<-data3$Countries
+  #Rounding, 2 decimals
+  round2<-function(x){
+    x<-as.numeric(format(round(x,2),nsmall=2))
+    return(x)
+  }
+  data3[2:4]<-sapply(data3[,2:4],round2)
+  #Alphabetize
+  data3<-data3[order(data3$Countries),]
   #Calculation Table
   output$myTable2 <- renderTable(table(input$country),include.rownames=FALSE)
   table<-function(x){
@@ -31,10 +39,7 @@ shinyServer(function(input, output) {
     g2<-((y3-y2)/y2)*100
     g2<-as.numeric(format(round(g2, 2), nsmall = 2))
     avg<-((g1+g2)/2)
-    #assign("avg", avg, envir = .GlobalEnv)
     df<-data.frame(rbind(data3[x,-1],c("YoY Growth % :",g1,g2)),check.rows = FALSE,check.names=FALSE)
-    #df2<-data.frame(df,row.names=c("Exp. $")) 
-    #row.names(df)<-c("Exp. $","YoY Growth %")
     output$text1 <- renderText({ 
       paste("Avg. Growth % ",avg)
     })
