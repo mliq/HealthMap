@@ -14,9 +14,7 @@ shinyUI(fluidPage(
     ),
     column(8, 
            h4("Calculate Annual Growth Rate:"),
-           includeHTML("www/js/myselect2.js"),
            selectInput(inputId = "country", label = "Select:", choices = data3$Countries, selected = 'Data view'),
-           #htmlOutput("countries"),
            htmlOutput('myTable2')
     )
   ),
