@@ -31,7 +31,7 @@ shinyServer(function(input, output) {
     g2<-((y3-y2)/y2)*100
     g2<-as.numeric(format(round(g2, 2), nsmall = 2))
     avg<-((g1+g2)/2)
-    assign("avg", avg, envir = .GlobalEnv)
+    #assign("avg", avg, envir = .GlobalEnv)
     df<-data.frame(rbind(data3[x,-1],c("YoY Growth % :",g1,g2)),check.rows = FALSE,check.names=FALSE)
     #df2<-data.frame(df,row.names=c("Exp. $")) 
     #row.names(df)<-c("Exp. $","YoY Growth %")
