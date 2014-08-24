@@ -6,14 +6,20 @@ shinyUI(fluidPage(
   h4("Legend:", "100", {img(src="legend.png")}, "4000"),
   hr(),
   fluidRow(
-    column(3,
+    column(4,
            h4("Map Year"),           
            sliderInput('year', 'Year',format ="####",  min=2010, max=2012, value=2012, 
                        step=1),
            br()
     ),
-    column(9, 
-           htmlOutput('myTable')
+    column(8, 
+           h4("Calculate Annual Growth Rate:"),
+           includeHTML("www/js/myselect2.js"),
+           selectInput(inputId = "tool", label = "Tool:", choices = "countries", selected = 'Data view')
     )
-  )
+  ),
+  fluidRow(
+    h4("Data Table (sortable)"),
+    htmlOutput('myTable')
+    )
 ))

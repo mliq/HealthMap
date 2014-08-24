@@ -17,7 +17,10 @@ shinyServer(function(input, output) {
 	data3[58,1]<-"Egypt"
 	data3[188,1]<-"Slovakia"
 	data3[101,1]<-"Kyrgyzstan"
-
+  #observe({
+  #  updateSelectInput(session, "countries", choices = "data3$Countries")
+  #})
+    #countries<-data3$Countries,
     output$myMap <- renderGvis({
     gvisGeoChart(data3, locationvar="Countries", colorvar=input$year,
                  options=list(legend='false', 
