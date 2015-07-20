@@ -1,0 +1,8 @@
+name: HealthMap
+account: mliq
+server: shinyapps.io
+bundleId: 222685
+url: https://mliq.shinyapps.io/HealthMap
+when: 1437415367.8733
+asMultiple: FALSE
+asStatic: FALSE
